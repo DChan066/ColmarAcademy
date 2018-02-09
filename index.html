@@ -2,120 +2,205 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width"> <!-- Need this to make media queries work in Google Chrome device toolbar -->
     <title>Colmar Academy</title>
     <link href="./resources/css/reset.css" type="text/css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet" >
+    <link href="./favicon.ico" type="image/x-icon" rel="icon">
     <link href="./resources/css/style.css" type="text/css" rel="stylesheet">
   </head>
   <body>
 
+    <!-- In the mobile version of the site, the logo text and the "For companies" nav link are hidden. The remaining nav items are also changed from text to icons. -->
     <header>
-      <img src="./resources/images/ic-logo.svg" alt="Colmar Academy logo">
-      <span>COLMARACADEMY</span>
-      <nav>
-        <span>On campus</span>
-        <span>Online</span>
-        <span>For companies</span>
-        <span>Sign in</span>
+      <div class="logo_box">
+        <img class="ca_logo" src="./resources/images/ic-logo.svg" alt="Colmar Academy logo">
+        <div class="desktop">
+          <span class="logo colmar">COLMAR</span>
+          <span class="logo academy">ACADEMY</span>
+        </div>
+      </div>
+      <nav class="desktop">
+        <a href="#">On campus</a>
+        <a href="#">Online</a>
+        <a href="#">For companies</a>
+        <a href="#">Sign in</a>
+      </nav>
+      <nav class="mobile">
+        <a href="#"><img class="nav_icon" src="./resources/images/ic-on-campus.svg" alt="On campus"></a>
+        <a href="#"><img class="nav_icon" src="./resources/images/ic-online.svg" alt="Online"></a>
+        <a href="#"><img class="nav_icon" src="./resources/images/ic-login.svg" alt="Sign in"></a>
       </nav>
     </header>
 
-    <div class="banner">
-      <img src="./resources/images/banner.jpg" alt="">
-      <h1>Learn something new everyday</h1>
-      <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
-      <span>Start here</span>
-    </div>
 
-    <article class="information_main">
-      <img src="./resources/images/information-main.jpg" alt="">
-      <h2>It doesn't hurt to keep practicing</h2>
-      <p>"Curabitur vitae libero in ipsum porttitor consequat. Aliquam et commodo lectus, nec consequat neque. Sed non accumsan urna. Phasellus sed consequat ex. Etiam eget magna laoreet effictur dolor consequat, tristique ligula."</p>
-      <span>Emanuel, Sr Strategist at Hiring.com</span>
-    </article>
 
-    <aside class="information_side">
-      <div class="info" id="orientation">
-        <img src="./resources/images/information-orientation.jpg" alt="">
-        <h4>Orientation date</h4>
-        <p>Tue 10/11 & Wed 10/12: 8am-3pm</p>
-        <span><a href="#">Read more</a></span>
-      </div>
-      <div class="info" id="campus">
-        <img src="./resources/images/information-campus.jpg" alt="">
-        <h4>Our campus</h4>
-        <p>Find which campus is close by you</p>
-        <span><a href="#">Read more</a></span>
-      </div>
-      <div class="info" id="guest_lecture">
-        <img src="./resources/images/information-guest-lecture.jpg" alt="">
-        <h4>Our guest lecture</h4>
-        <p>Join a keynote with Oliver Sack about music in medical treatment</p>
-        <span><a href="#">Read more</a></span>
-      </div>
-    </aside>
-
-    <section id="learning">
-      <h2>Start learning</h2>
-      <div class="topic" id="software">
-        <img src="./resources/images/course-software.jpg" alt="">
-        <h4>Software engineering</h4>
-        <p>COURSES</p>
-        <p>Web Development, Mobile Development, iOT, APIs</p>
-      </div>
-      <div class="topic" id="computer_art">
-        <img src="./resources/images/course-computer-art.jpg" alt="">
-        <h4>Computer art</h4>
-        <p>COURSES</p>
-        <p>Imaging & Design, Web Design, Motion Graphics & Visual Effects, Computer Animation</p>
-      </div>
-      <div class="topic" id="design">
-        <img src="./resources/images/course-design.jpg" alt="">
-        <h4>Design</h4>
-        <p>COURSES</p>
-        <p>User Experience Design, User Research, Visual Design</p>
-      </div>
-      <div class="topic" id="data">
-        <img src="./resources/images/course-data.jpg" alt="">
-        <h4>Data</h4>
-        <p>COURSES</p>
-        <p>Data Science, Big Data, SQL, Data Visualization</p>
-      </div>
-      <div class="topic" id="business">
-        <img src="./resources/images/course-business.jpg" alt="">
-        <h4>Business</h4>
-        <p>COURSES</p>
-        <p>Product Development, Business Development, Startup</p>
-      </div>
-      <div class="topic" id="marketing">
-        <img src="./resources/images/course-marketing.jpg" alt="">
-        <h4>Marketing</h4>
-        <p>COURSES</p>
-        <p>Analytics, Content Marketing, Mobile Marketing</p>
-      </div>
-    </section>
-
-    <section id="thesis">
-      <h2>Thesis exhibit</h2>
-      <div class="video_box">
-        <video src="./resources/videos/thesis.mp4"/>
-        <h4>Reimagine urban</h4>
-        <p>"Curabitur vitae libero in ipsum porttitor consequat. Aliquam et commodo lectus, nec consequat neque. Sed non accumsan urna. Phasellus sed consequat ex. Etiam eget magna laoreet effictur dolor consequat, tristique ligula."</p>
-      </div>
-      <aside class="information_box">
-        <div class="info" id="fisma">
-          <img src="./resources/images/thesis-fisma.jpg" alt="">
-          <h4>Fisma: Design and Prototype</h4>
-          <p>Designer showcase of new prototype product</p>
-        </div>
-        <div class="info" id="now_and_then">
-          <img src="./resources/images/thesis-now-and-then.jpg" alt="">
-          <h4>Now and then</h4>
-          <p>Research study about New York</p>
+    <section id="banner" class="container">
+      <!-- For the desktop version, both the height and width of the banner image will change, so we use the <img> in index.html. In the mobile version we use a fixed height for the image container and cut off the top and bottom if the image inside becomes too tall. -->
+      <article>
+        <img src="./resources/images/banner.jpg" alt="">
+      </article>
+      <aside>
+        <div class="banner_text">
+          <h1>Learn something new everyday</h1>
+          <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
+          <a href="#"><span>Start here</span></a>
         </div>
       </aside>
-    </section>
+    </section> <!-- End banner section -->
 
-    <footer>&copy;2016 Colmar Academy. All rights reserved</footer>
+
+
+    <section id="information" class="container">
+      <!-- The article on the left side of the information section does not show up in the mobile version of the page at all! So we give this whole article the desktop class. -->
+      <article>
+        <img src="./resources/images/information-main.jpg" alt="">
+        <h2>It doesn't hurt to keep practicing</h2>
+        <div class="quote">
+          <p>"Curabitur vitae libero in ipsum porttitor consequat. Aliquam et commodo lectus, nec consequat neque. Sed non accumsan urna. Phasellus sed consequat ex. Etiam eget magna laoreet effictur dolor consequat, tristique ligula."</p>
+          <div class="citation">Emanuel, Sr Strategist at Hiring.com</div>
+        </div>
+      </article>
+
+      <aside>
+        <div class="side_info">
+          <img class="desktop" src="./resources/images/information-orientation.jpg" alt="">
+          <img class="mobile" src="./resources/images/information-orientation-mobile.jpg" alt="">
+          <div class="side_info_text">
+            <h4>Orientation date</h4>
+            <p>Tue 10/11 & Wed 10/12: 8am-3pm</p>
+            <span><a href="#">Read more</a></span>
+          </div>
+        </div>
+        <div class="side_info">
+          <img class="desktop" src="./resources/images/information-campus.jpg" alt="">
+          <img class="mobile" src="./resources/images/information-campus-mobile.jpg" alt="">
+          <div class="side_info_text">
+            <h4>Our campus</h4>
+            <p>Find which campus is close by you</p>
+            <span><a href="#">Read more</a></span>
+          </div>
+        </div>
+        <div class="side_info">
+          <img class="desktop" src="./resources/images/information-guest-lecture.jpg" alt="">
+          <img class="mobile" src="./resources/images/information-guest-lecture-mobile.jpg" alt="">
+          <div class="side_info_text">
+            <h4>Our guest lecture</h4>
+            <p>Join a keynote with Oliver Sack about music in medical treatment</p>
+            <span><a href="#">Read more</a></span>
+          </div>
+        </div>
+      </aside>
+    </section> <!-- End information section -->
+
+    <section id="courses" class="container">
+      <h2>Start learning</h2>
+      <div class="topics container">
+        <div class="topic">
+          <a href="#">
+            <img src="./resources/images/course-software.jpg" alt="">
+            <div class="topic_text">
+              <h4>Software engineering</h4>
+              <p>COURSES</p>
+              <p>Web Development, Mobile Development, iOT, APIs</p>
+            </div>
+          </a>
+        </div>
+        <div class="topic">
+          <a href="#">
+            <img src="./resources/images/course-computer-art.jpg" alt="">
+            <div class="topic_text">
+              <h4>Computer art</h4>
+              <p>COURSES</p>
+              <p>Imaging & Design, Web Design, Motion Graphics & Visual Effects, Computer Animation</p>
+            </div>
+          </a>
+        </div>
+        <div class="topic">
+          <a href="#">
+            <img src="./resources/images/course-design.jpg" alt="">
+            <div class="topic_text">
+              <h4>Design</h4>
+              <p>COURSES</p>
+              <p>User Experience Design, User Research, Visual Design</p>
+            </div>
+          </a>
+        </div>
+        <div class="topic">
+          <a href="#">
+            <img src="./resources/images/course-data.jpg" alt="">
+            <div class="topic_text">
+              <h4>Data</h4>
+              <p>COURSES</p>
+              <p>Data Science, Big Data, SQL, Data Visualization</p>
+            </div>
+          </a>
+        </div>
+        <div class="topic">
+          <a href="#">
+            <img src="./resources/images/course-business.jpg" alt="">
+            <div class="topic_text">
+              <h4>Business</h4>
+              <p>COURSES</p>
+              <p>Product Development, Business Development, Startup</p>
+            </div>
+          </a>
+        </div>
+        <div class="topic">
+          <a href="#">
+            <img src="./resources/images/course-marketing.jpg" alt="">
+            <div class="topic_text">
+              <h4>Marketing</h4>
+              <p>COURSES</p>
+              <p>Analytics, Content Marketing, Mobile Marketing</p>
+            </div>
+          </a>
+        </div>
+      </div> <!-- End topics container -->
+    </section> <!-- End course section -->
+
+
+
+    <section id="thesis" class="container">
+      <h2>Thesis exhibit</h2>
+
+      <div class="container">
+        <article>
+          <div class="video_box">
+            <!-- Setting the controls boolean makes the browser show video controls on top of the video by default, making it easier to tell it's a video -->
+            <video src="./resources/videos/thesis.mp4" controls="true">Mp4 video not supported.</video>
+            <h4>Reimagine urban</h4>
+            <p>"Curabitur vitae libero in ipsum porttitor consequat. Aliquam et commodo lectus, nec consequat neque. Sed non accumsan urna. Phasellus sed consequat ex. Etiam eget magna laoreet effictur dolor consequat, tristique ligula."</p>
+          </div>
+        </article>
+        <aside>
+          <div class="side_info">
+            <img src="./resources/images/thesis-fisma.jpg" alt="">
+            <div class="side_info_text">
+              <h4>Fisma: Design and Prototype</h4>
+              <p>Designer showcase of new prototype product</p>
+              <span><a href="#">Read more</a></span>
+            </div>
+          </div>
+          <div class="side_info">
+            <img src="./resources/images/thesis-now-and-then.jpg" alt="">
+            <div class="side_info_text">
+              <h4>Now and then</h4>
+              <p>Research study about New York</p>
+              <span><a href="#">Read more</a></span>
+            </div>
+          </div>
+        </aside>
+      </div> <!-- End desktop version of thesis section -->
+    </section> <!-- End Thesis section -->
+
+    <footer>
+      <span>&copy;2016 Colmar Academy. All rights reserved</span>
+      <nav>
+        <span><a href="#">Terms</a></span>
+        <span><a href="#">Privacy</a></span>
+      </nav>
+    </footer>
 
   </body>
 </html>

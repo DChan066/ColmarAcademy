@@ -1,4 +1,437 @@
+/* Universal stylings */
+
 html {
   font-size: 18px;
   font-family: Helvetica;
+  color: #4a4a4a;
+}
+
+body {
+  line-height: 1.4;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+/* The banner, information and thesis sections are split into the main article on the left taking up 60% of the page width, and the aside section on the right taking up 40% or less of the screen width */
+article {
+  width: 60%;
+  margin: 32px 24px;
+}
+
+article img, video {
+  width: 100%;
+  height: auto;
+}
+
+aside {
+  float: right;
+  width: 40%;
+  margin-top: 16px;
+}
+
+.side_info {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+}
+
+.side_info img {
+  width: 32%;
+  height: auto;
+}
+
+.side_info_text {
+  padding: 0 16px;
+}
+
+.side_info_text p {
+  padding: 8px 0;
+}
+
+.side_info_text span a {
+  color: #4a90e2;
+}
+
+.side_info_text span a:hover {
+  color: #225599;
+}
+
+.column {
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+h4 {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 470px) {
+  .desktop {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 470px) {
+  .mobile {
+    display: none;
+  }
+}
+
+/**********/
+/* Header */
+/**********/
+
+header {
+  display: flex;
+  align-items: center;
+  height: 64px;
+}
+
+/* Contains the Colmar Academy logo on the left side of the header */
+header .logo_box {
+  display: flex;
+  align-items: center;
+  margin-left: 24px;
+}
+
+.ca_logo {
+  height: 44px;
+}
+
+.logo {
+  font-size: 1.111rem;
+}
+
+
+/* The words "Colmar" and "Academy" are different colors in the logo, so we style them separately */
+.logo.colmar {
+  color: #4a4a4a;
+  font-weight: bold;
+}
+
+.logo.academy {
+  color: #9b9b9b;
+}
+
+header nav {
+  display: flex;
+  flex-grow: 1;
+}
+
+/* When the browser window is desktop-sized, the navigation links are pushed to the right side of the banner */
+header nav.desktop {
+  justify-content: flex-end;
+  margin-right: 16px;
+}
+
+/* Vertical padding is added to make the area around the link change color when the user hovers over it. This is not needed in the mobile version where the user isn't expected to use a mouse */
+header nav.desktop a {
+  padding: 0 0.5rem;
+  color: #5c5c5c;
+}
+
+header nav.desktop a:hover {
+color: black;
+}
+
+@media only screen and (max-width: 470px) {
+  /* For mobile devices, the navigation links are placed in the center and spread evenly across the screen width */
+  header .logo_box {
+    width: 25%;
+    justify-content: center;
+    margin: 0;
+  }
+
+  header nav.mobile {
+    width: 75%;
+    justify-content: space-around;
+  }
+
+  header nav.mobile a {
+    display: flex;
+    align-items: center;
+  }
+
+  /* The Colmar Academy logo is made slightly larger than the other navigation icons */
+  header nav.mobile .ca_logo {
+    height: 38px;
+  }
+
+  header nav.mobile .nav_icon {
+    height: 32px;
+  }
+}
+
+
+/**********/
+/* Banner */
+/**********/
+
+#banner {
+  align-items: center;
+  background-color: #dbdbdb;
+}
+
+#banner article {
+  background-image: url(../images/banner.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* The banner text doesn't stretch across the whole side section, so we set 28% instead of 40% */
+#banner aside {
+  width: 28%;
+}
+
+.banner_text a {
+  display: flex;
+  justify-content: center;
+  background-color: #4a4a4a;
+  width: 100%;
+  margin: 24px 0 32px;
+  transition: background-color 0.15s ease;
+}
+
+.banner_text a:hover {
+  background-color: #9b9b9b;
+}
+
+.banner_text a span {
+  color: white;
+  margin: 8px auto;
+}
+
+#banner article img {
+  width: 100%;
+  height: auto;
+}
+
+.banner_text {
+  padding: 0 16px;
+}
+
+.banner_text h1 {
+  padding: 32px 0;
+}
+
+/* For the mobile version, we don't want the main banner image to take up too much vertical space, so we fix a height for the main_banner div and trim the top and bottom accordingly. */
+@media only screen and (max-width: 470px) {
+  #banner {
+    flex-direction: column;
+  }
+
+  #banner article {
+    width: 100%;
+    height: 14rem;
+    margin: 0;
+  }
+
+  #banner aside {
+    width: 100%;
+    margin: 0;
+  }
+
+  #banner article img {
+    display: none;
+  }
+}
+
+
+/***************/
+/* Information */
+/***************/
+
+#information {
+  background-color: #f3f5f5;
+}
+
+#information article h2 {
+  padding: 32px 0 24px;
+}
+
+.quote .citation {
+  padding-top: 32px;
+  font-size: 0.875rem;
+}
+
+/* The mobile version does not show the desktop version's main article in the information section. So we expand the side section to cover the whole screen width */
+@media only screen and (max-width: 470px) {
+  #information article {
+    display: none;
+  }
+
+  #information aside {
+    width: 100%;
+    margin-top: -16px;
+  }
+
+  .side_info {
+    display: block;
+    padding: 16px 16px 32px;
+  }
+
+  .side_info img {
+    width: 100%;
+    padding: 16px 0;
+  }
+}
+
+/***********/
+/* Courses */
+/***********/
+
+#courses {
+  flex-direction: column;
+  align-items: center;
+  background-color: #eaebec;
+}
+
+#courses h2 {
+  padding-top: 32px;
+}
+
+.topics {
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 16px 56px;
+}
+
+.topic {
+  background-color: white;
+  margin: 16px;
+  width: 320px;
+  opacity: 0.85;
+  transition: opacity 0.5s ease;
+}
+
+.topic:hover {
+  opacity: 1.0;
+}
+
+.topic img {
+  width: 100%;
+  height: auto;
+}
+
+/* Once we make each topic square into a clickable link using the "a" tags, the color defined in the html selector no longer reaches the text inside. So we must define the color again */
+.topic_text {
+  padding: 16px 16px 24px;
+  color: #4a4a4a;
+}
+
+.topic_text p:nth-child(even) {
+  margin: 8px 0;
+}
+
+/* In the mobile version, the only thing in the topic boxes will be the topic name */
+@media only screen and (max-width: 470px) {
+  #courses {
+    background-color: #f5f4f5;
+    border-top: 1px solid #e0e2e2;
+  }
+
+  .topics {
+    margin: 12px 56px 28px;
+    background-color: #f5f4f5;
+  }
+
+  /* It is assumed that mobile users don't have the option to hover, so we make the topic boxes 100% opaque here */
+  .topic {
+    margin: 4px 16px;
+    width: 100%;
+    background-color: #d8d8d8;
+    opacity: 1;
+  }
+
+  .topic img, .topic_text p {
+    display: none;
+  }
+}
+
+/**********/
+/* Thesis */
+/**********/
+
+#thesis {
+  flex-direction: column;
+  align-items: center;
+  background-color: #f3f5f5;
+  border-top: 1px solid #e0e2e2;
+}
+
+#thesis h2 {
+  padding-top: 32px;
+}
+
+#thesis article h4 {
+  padding: 24px 0 8px;
+}
+
+/* In the mobile version, only the thesis video is displayed */
+@media only screen and (max-width: 470px) {
+  #thesis aside, #thesis .video_box h4, #thesis .video_box p {
+    display: none;
+  }
+
+  #thesis article {
+    width: 100%;
+    margin: 0;
+    padding: 16px 0 24px;
+  }
+}
+
+/**********/
+/* Footer */
+/**********/
+
+footer {
+  display: flex;
+  padding: 16px 0px 0px 24px;
+  height: 80px;
+  font-size: 0.875rem;
+  border-top: 1px solid #e0e2e2;
+  background-color: #f3f5f5;
+}
+
+footer nav {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+  margin-right: 16px;
+}
+
+footer nav span a {
+  padding: 0 8px;
+  color: #767676;
+}
+
+footer nav span a:hover {
+  color: black;
+}
+
+/* Terms and Privacy links not shown in mobile version */
+@media only screen and (max-width: 470px) {
+  footer {
+    padding-bottom: 16px;
+    height: auto;
+    border-top: none;
+  }
+
+  footer nav {
+    display: none;
+  }
 }
