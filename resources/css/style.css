@@ -1,24 +1,28 @@
 /* Universal stylings */
 
 html {
-  font-size: 18px;
+  font-size: 16px;
   font-family: Helvetica;
   color: #4a4a4a;
 }
 
+/* Can't set line-height in the html selector, so we do it here */
 body {
   line-height: 1.4;
 }
 
+/* The page layout becomes overwhelmed with images, and the main content becomes too spread out if it uses the full width of a desktop screen. So we set a maximum width using containers */
 .container {
   display: flex;
-  width: 100%;
+  flex-grow: 1;
+  max-width: 1048px;
+  margin: 0 auto;
 }
 
 /* The banner, information and thesis sections are split into the main article on the left taking up 60% of the page width, and the aside section on the right taking up 40% or less of the screen width */
 article {
   width: 60%;
-  margin: 32px 24px;
+  margin: 2rem 1.5rem;
 }
 
 article img, video {
@@ -29,13 +33,14 @@ article img, video {
 aside {
   float: right;
   width: 40%;
-  margin-top: 16px;
+  margin-top: 1rem;
 }
 
+/* The information and thesis sections use these cards in their aside sections, each with a thumbnail image, a headline and a link to further information */
 .side_info {
   display: flex;
   align-items: center;
-  padding: 16px;
+  padding: 1rem;
 }
 
 .side_info img {
@@ -44,14 +49,15 @@ aside {
 }
 
 .side_info_text {
-  padding: 0 16px;
+  padding: 0 1rem;
 }
 
 .side_info_text p {
-  padding: 8px 0;
+  padding: 0.5rem 0;
 }
 
 .side_info_text span a {
+  font-size: 0.875rem;
   color: #4a90e2;
 }
 
@@ -59,12 +65,8 @@ aside {
   color: #225599;
 }
 
-.column {
-  flex-direction: column;
-}
-
 h1 {
-  font-size: 2rem;
+  font-size: 1.875rem;
   font-weight: 800;
 }
 
@@ -74,17 +76,22 @@ h2 {
 }
 
 h4 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
-@media only screen and (max-width: 470px) {
+p {
+  font-size: 0.9rem;
+  color: #767676;
+}
+
+@media only screen and (max-width: 612px) {
   .desktop {
     display: none;
   }
 }
 
-@media only screen and (min-width: 470px) {
+@media only screen and (min-width: 612px) {
   .mobile {
     display: none;
   }
@@ -94,21 +101,36 @@ h4 {
 /* Header */
 /**********/
 
+/* The header's position is fixed at the top of the screen even when the user scrolls down */
 header {
+  position: fixed;
   display: flex;
   align-items: center;
-  height: 64px;
+  width: 100%;
+  height: 4rem;
+  background-color: white;
+  z-index: 5;
+}
+
+/* All sections are shifted downward to make room for the fixed-position header */
+#banner, #information, #courses, #thesis, footer {
+  position: relative;
+  top: 4rem;
+}
+
+header .container {
+  align-items: center;
 }
 
 /* Contains the Colmar Academy logo on the left side of the header */
 header .logo_box {
   display: flex;
   align-items: center;
-  margin-left: 24px;
+  margin-left: 1.5rem;
 }
 
 .ca_logo {
-  height: 44px;
+  height: 2.75rem;
 }
 
 .logo {
@@ -134,7 +156,7 @@ header nav {
 /* When the browser window is desktop-sized, the navigation links are pushed to the right side of the banner */
 header nav.desktop {
   justify-content: flex-end;
-  margin-right: 16px;
+  margin-right: 1rem;
 }
 
 /* Vertical padding is added to make the area around the link change color when the user hovers over it. This is not needed in the mobile version where the user isn't expected to use a mouse */
@@ -147,7 +169,7 @@ header nav.desktop a:hover {
 color: black;
 }
 
-@media only screen and (max-width: 470px) {
+@media only screen and (max-width: 612px) {
   /* For mobile devices, the navigation links are placed in the center and spread evenly across the screen width */
   header .logo_box {
     width: 25%;
@@ -167,11 +189,11 @@ color: black;
 
   /* The Colmar Academy logo is made slightly larger than the other navigation icons */
   header nav.mobile .ca_logo {
-    height: 38px;
+    height: 2.375rem;
   }
 
   header nav.mobile .nav_icon {
-    height: 32px;
+    height: 2rem;
   }
 }
 
@@ -181,20 +203,17 @@ color: black;
 /**********/
 
 #banner {
-  align-items: center;
   background-color: #dbdbdb;
 }
 
-#banner article {
-  background-image: url(../images/banner.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+#banner .container {
+  align-items: center;
 }
 
-/* The banner text doesn't stretch across the whole side section, so we set 28% instead of 40% */
-#banner aside {
-  width: 28%;
+/* The banner text doesn't stretch across the whole side section, so we make it use a fraction of the <aside> section */
+.banner_text {
+  width: 75%;
+  margin: 0 1rem;
 }
 
 .banner_text a {
@@ -202,39 +221,32 @@ color: black;
   justify-content: center;
   background-color: #4a4a4a;
   width: 100%;
-  margin: 24px 0 32px;
+  margin: 1.5rem 0 2rem;
+  padding: 0.5rem 0;
   transition: background-color 0.15s ease;
+  color: white;
 }
 
 .banner_text a:hover {
   background-color: #9b9b9b;
 }
 
-.banner_text a span {
-  color: white;
-  margin: 8px auto;
-}
-
-#banner article img {
-  width: 100%;
-  height: auto;
-}
-
-.banner_text {
-  padding: 0 16px;
-}
-
 .banner_text h1 {
-  padding: 32px 0;
+  padding: 2rem 0;
 }
 
 /* For the mobile version, we don't want the main banner image to take up too much vertical space, so we fix a height for the main_banner div and trim the top and bottom accordingly. */
-@media only screen and (max-width: 470px) {
-  #banner {
+@media only screen and (max-width: 612px) {
+  #banner .container {
     flex-direction: column;
   }
 
+  /* Mobile version uses a background image that takes up the full screen width, but uses a maximum height to avoid taking up too much space */
   #banner article {
+    background-image: url(../images/banner.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 100%;
     height: 14rem;
     margin: 0;
@@ -245,8 +257,9 @@ color: black;
     margin: 0;
   }
 
-  #banner article img {
-    display: none;
+  /* The aside section takes up the whole screen width now, so the text inside should just go with the flow. Setting this to 100% as well will actually cause horizontal overflow */
+  .banner_text {
+    width: auto;
   }
 }
 
@@ -260,33 +273,33 @@ color: black;
 }
 
 #information article h2 {
-  padding: 32px 0 24px;
+  padding: 2rem 0 1.5rem;
 }
 
 .quote .citation {
-  padding-top: 32px;
-  font-size: 0.875rem;
+  padding-top: 1.5rem;
+  font-size: 0.8rem;
 }
 
 /* The mobile version does not show the desktop version's main article in the information section. So we expand the side section to cover the whole screen width */
-@media only screen and (max-width: 470px) {
+@media only screen and (max-width: 612px) {
   #information article {
     display: none;
   }
 
   #information aside {
     width: 100%;
-    margin-top: -16px;
+    margin-top: -1rem;
   }
 
   .side_info {
     display: block;
-    padding: 16px 16px 32px;
+    padding: 1rem 1rem 2rem;
   }
 
   .side_info img {
     width: 100%;
-    padding: 16px 0;
+    padding: 1rem 0;
   }
 }
 
@@ -295,25 +308,30 @@ color: black;
 /***********/
 
 #courses {
-  flex-direction: column;
-  align-items: center;
   background-color: #eaebec;
 }
 
+#courses .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #courses h2 {
-  padding-top: 32px;
+  padding-top: 2rem;
 }
 
 .topics {
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 16px 56px;
+  margin: 1rem 3.5rem;
 }
 
 .topic {
   background-color: white;
-  margin: 16px;
-  width: 320px;
+  margin: 1rem;
+  width: 16.875rem;
   opacity: 0.85;
   transition: opacity 0.5s ease;
 }
@@ -329,29 +347,29 @@ color: black;
 
 /* Once we make each topic square into a clickable link using the "a" tags, the color defined in the html selector no longer reaches the text inside. So we must define the color again */
 .topic_text {
-  padding: 16px 16px 24px;
+  padding: 1rem 1rem 1.5rem;
   color: #4a4a4a;
 }
 
 .topic_text p:nth-child(even) {
-  margin: 8px 0;
+  margin: 0.5rem 0;
 }
 
 /* In the mobile version, the only thing in the topic boxes will be the topic name */
-@media only screen and (max-width: 470px) {
+@media only screen and (max-width: 612px) {
   #courses {
     background-color: #f5f4f5;
     border-top: 1px solid #e0e2e2;
   }
 
   .topics {
-    margin: 12px 56px 28px;
+    margin: 0.75rem 0 1.75rem;
     background-color: #f5f4f5;
   }
 
   /* It is assumed that mobile users don't have the option to hover, so we make the topic boxes 100% opaque here */
   .topic {
-    margin: 4px 16px;
+    margin: 0.25rem 1rem;
     width: 100%;
     background-color: #d8d8d8;
     opacity: 1;
@@ -367,22 +385,29 @@ color: black;
 /**********/
 
 #thesis {
+  background-color: #f3f5f5;
+}
+
+#thesis .container {
   flex-direction: column;
   align-items: center;
-  background-color: #f3f5f5;
   border-top: 1px solid #e0e2e2;
 }
 
+#thesis .thesis_content {
+  display: flex;
+}
+
 #thesis h2 {
-  padding-top: 32px;
+  padding-top: 2rem;
 }
 
 #thesis article h4 {
-  padding: 24px 0 8px;
+  padding: 1.5rem 0 0.5rem;
 }
 
 /* In the mobile version, only the thesis video is displayed */
-@media only screen and (max-width: 470px) {
+@media only screen and (max-width: 612px) {
   #thesis aside, #thesis .video_box h4, #thesis .video_box p {
     display: none;
   }
@@ -390,7 +415,7 @@ color: black;
   #thesis article {
     width: 100%;
     margin: 0;
-    padding: 16px 0 24px;
+    padding: 1rem 0 1.5rem;
   }
 }
 
@@ -400,22 +425,26 @@ color: black;
 
 footer {
   display: flex;
-  padding: 16px 0px 0px 24px;
-  height: 80px;
+  padding-top: 1rem;
+  height: 5rem;
   font-size: 0.875rem;
   border-top: 1px solid #e0e2e2;
   background-color: #f3f5f5;
+}
+
+footer .copyright {
+  margin-left: 1.5rem;
 }
 
 footer nav {
   display: flex;
   justify-content: flex-end;
   flex-grow: 1;
-  margin-right: 16px;
+  margin-right: 1rem;
 }
 
 footer nav span a {
-  padding: 0 8px;
+  padding: 0 0.5rem;
   color: #767676;
 }
 
@@ -424,9 +453,9 @@ footer nav span a:hover {
 }
 
 /* Terms and Privacy links not shown in mobile version */
-@media only screen and (max-width: 470px) {
+@media only screen and (max-width: 612px) {
   footer {
-    padding-bottom: 16px;
+    padding-bottom: 1rem;
     height: auto;
     border-top: none;
   }
